@@ -1,12 +1,9 @@
- <div class="content-section">
-    <form method="POST">
-        {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class ="border-bottom mb-4">Join</legend>
-            {{ form.as_p}}
-        </fieldset>
+<div class="content-section">
+    <form action="/register/" method="post">
+        {% csrf_token %} {{form.as_p}} {% if request.GET.next %}
+        <input type="hidden" name="next" value="{{request.GET.next}}"> {% endif %}
         <div class="form-group">
             <button class="btn btn-outline-info" type="submit">Sign up</button>
         </div>
     </form>
-</div>                 
+</div>
