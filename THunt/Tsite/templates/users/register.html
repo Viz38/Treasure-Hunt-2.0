@@ -1,9 +1,11 @@
 <div class="content-section">
-    <form action="/register/" method="post">
-        {% csrf_token %} {{form.as_p}} {% if request.GET.next %}
-        <input type="hidden" name="next" value="{{request.GET.next}}"> {% endif %}
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}} 
+        {% comment %} {% if request.GET.next %} {% endcomment %}
+        {% comment %} <input type="hidden" name="next" value="{{request.GET.next}}"> {% endif %} {% endcomment %}
         <div class="form-group">
-            <button class="btn btn-outline-info" type="submit">Sign up</button>
+            <button class="btn btn-outline-info" type="submit">Register</button>
         </div>
     </form>
 </div>

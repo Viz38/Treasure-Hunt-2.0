@@ -1,0 +1,11 @@
+<div class="content-section">
+    <form action="{% url 'sign_in' %}" method="post">
+        {% csrf_token %} 
+        {{form.as_p}} 
+        {% comment %} {% if request.GET.next %} {% endcomment %}
+        {% comment %} <input type="hidden" name="next" value="{{request.GET.next}}"> {% endif %} {% endcomment %}
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Sign In</button>
+        </div>
+    </form>
+</div>
