@@ -186,7 +186,7 @@ html {
     background: #100e17 url(../images/bg.jpg);
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: contain
+    background-size: cover
 }
 
 a {
@@ -726,4 +726,78 @@ footer a {
         font-size: small;
         padding: .3em!important
     }
+}
+
+.form-wrap {
+    margin: 25px;
+    width: 100%;
+    padding: 30px;
+}
+
+.form-wrap p {
+    margin: 20px 15px 50px 0;
+}
+
+header h1 {
+    padding: 10px 15px;
+    margin-top: 20px;
+}
+
+header p {
+    font-size: 16px;
+    padding-bottom: 30px;
+    text-align: left;
+}
+
+.form-group {
+    display: inline-block;
+    width: 40%;
+    margin: 10px 10px;
+}
+
+.form-group label {
+    display: block;
+}
+
+.form-group input {
+    width: 100%;
+    line-height: 2.4em;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.form-group-checkbox {
+    display: block;
+    width: 100%;
+    padding-left: 10px;
+    margin-top: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #4404bb;
+}
+
+a:hover {
+    color: #300877;
+}
+
+.form-checkbox {
+    display: block;
+}
+
+button {
+    padding: 15px 25px;
+    border: none;
+    background-color: rgb(8, 150, 231);
+    color: white;
+    cursor: pointer;
+    margin-top: 50px;
+}
+
+button:hover {
+    background-color: rgb(6, 127, 197);
+    ;
 }
