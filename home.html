@@ -37,9 +37,36 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#register">Register</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="document.getElementById('id01').style.display='block'">Login</a>
+                </li>
             </ul>
         </nav>
     </header>
+
+    <!-- The Modal -->
+    <center>
+        <div id="id01" class="modal" style="position: sticky;">
+            <span style="color:#AD0252" onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+            <!-- Modal Content -->
+            <form class="modal-content animate" action="/action_page.php">
+                <div class="imgcontainer">
+                    <img src="images/avtr.png" alt="Avatar" class="avatar" width="5">
+                </div>
+                <div class="form-group">
+                    <center><label for="uname"><b>Email</b></label>
+                        <input type="text" placeholder="Email" name="uname" required>
+                        <br>
+                        <label for="psw"><b>Password</b></label>
+                        <input type="password" placeholder="Password" name="psw" required>
+                        <br>
+                        <button class="cta__button" type="submit">Login</button>
+                    </center>
+                </div>
+            </form>
+        </div>
+    </center>
 
     <main class="home" id="home">
         <section class="hero hero__main">
@@ -163,11 +190,11 @@
                     <h1 class="hero__heading">Registration</h1>
                     <div class="form-group">
                         <label for="first-name">First Name</label>
-                        <input type="text" name="first-name" id="first-name" placeholder="Enter First Name">
+                        <input type="text" name="first-name" id="first-name" placeholder="First Name">
                     </div>
                     <div class="form-group">
                         <label for="last-name">Last Name</label>
-                        <input type="text" name="last-name" id="last-name" placeholder="Enter Last Name">
+                        <input type="text" name="last-name" id="last-name" placeholder="Last Name">
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone</label>
@@ -175,19 +202,19 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" name="email" id="email" placeholder="Enter Your Email">
+                        <input type="text" name="email" id="email" placeholder="Email">
                     </div>
                     <div class="form-group">
                         <label for="password">College</label>
-                        <input type="text" name="college" id="college" placeholder="Enter Your College Name">
+                        <input type="text" name="college" id="college" placeholder="College Name">
                     </div>
                     <div class="form-group">
                         <label for="password-confirm">Semester</label>
-                        <input type="text" name="sem" id="sem" placeholder="Enter Your Current Semester">
+                        <input type="text" name="sem" id="sem" placeholder="Current Semester">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password" placeholder="Enter Password">
+                        <input type="password" name="password" id="password" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <label for="password-confirm">Confirm Password</label>
