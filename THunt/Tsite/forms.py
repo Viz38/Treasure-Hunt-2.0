@@ -1,12 +1,13 @@
 from django import forms
 from .models import Student,Answer
+from django.contrib.auth.forms import UserCreationForm
 
 
-class StudentRegistrationForm(forms.ModelForm):
+class StudentRegistrationForm(UserCreationForm):
 
     class Meta:
         model = Student
-        fields = ['name', 'usn', 'year', 'branch']
+        fields = ['email', 'username', 'usn', 'year', 'branch']
 
 
 # class AnswerForm(ModelForm):
@@ -17,5 +18,5 @@ class StudentRegistrationForm(forms.ModelForm):
 
 class SignInForm(forms.Form):
 
-    name = forms.CharField(label="Your Name", max_length=100)
-    usn = forms.CharField(label="Your usn", max_length=100)
+    email = forms.CharField(label="Your Email", max_length=100)
+    password = forms.CharField(label="Your password", max_length=100,)

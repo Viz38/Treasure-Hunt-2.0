@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Student, Answer
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 
@@ -21,18 +22,17 @@ def sign_in(request):
 
         form = SignInForm(request.POST)
         if form.is_valid():
-            name = form.cleaned_data['name']
-            usn = form.cleaned_data['usn']
-            try:
-                student = Student.objects.get(usn=usn, name=name)
-                request.session["name"] = student.name
-                request.session["usn"] = student.usn
+            email = form.cleaned_data["email"]
+            print(email)
+            password = form.cleaned_data["password"]
+            user = authenticate(username=email, password=password)
+            if user:
+                login(request, user)
                 return redirect("level_1")
-            except Student.DoesNotExist:
-                return redirect("register")
-    else:
-        form = SignInForm()
-        return render(request, "users/signin.html", {'form': form})
+            else:
+                return messages.error("User does not exist")
+    form = SignInForm()
+    return render(request, "users/signin.html", {'form': form})
 
 
 def register(request):
@@ -40,21 +40,24 @@ def register(request):
         form = StudentRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("home")
-        else:
-            form = StudentRegistrationForm()
-    else:
-        form = StudentRegistrationForm()
-        return render(request, 'users/register.html', {'form': form})
+            email = form.cleaned_data['email']
+            password = form.cleaned_data["password1"]
+            user = authenticate(username=email, password=password)
+            if user:
+                login(request, user)
+                if request.GET.get('next'):
+                  return redirect(request.GET['next'])  
+                return redirect("level_1")
+            else:
+                form = StudentRegistrationForm
+    form = StudentRegistrationForm()
+    return render(request, 'users/register.html', {'form': form})
     # return render(request,'users/register',{'form':form})
 
-
+@login_required(login_url='register')
 def level_1(request):
 
-    if request.session["usn"]:
-        return render(request, "users/l1.html")
-    else:
-        return messages.error("Usn not found")
+    return render(request, "users/l1.html")
 
 # def solution(request):
 
