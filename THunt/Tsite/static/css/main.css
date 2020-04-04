@@ -769,15 +769,17 @@ header p {
 } 
 
 input[name="password2"].form-control{
-   background-color: #000;
+   margin-bottom: 70px;
 }
 
-.form-group-checkbox {
+
+
+/* .form-group-checkbox {
     display: block;
     width: 100%;
     padding-left: 10px;
     margin-top: 15px;
-}
+} */
 
 a {
     text-decoration: none;

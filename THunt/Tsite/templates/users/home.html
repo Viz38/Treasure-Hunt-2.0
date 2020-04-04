@@ -15,6 +15,12 @@
 
 <body>
 
+    {% if ERROR %}
+        <script>
+            alert("NOT REGISTERED")
+        </script>
+    {% endif %}
+
     <header>
         <div class="menu-btn">
             <div class="btn-line"></div>
@@ -39,7 +45,7 @@
                     <a class="nav-link" href="#register">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" onclick="document.getElementById('id01').style.display='block'">Login</a>
+                    <a class="nav-link"  href="#id01" onclick="document.getElementById('id01').style.display='block'">Login</a>
                 </li>
             </ul>
         </nav>
@@ -47,22 +53,25 @@
 
     <!-- The Modal -->
     <center>
-        <div id="id01" class="modal" style="position: sticky;">
+        <div id="id01" class="modal">
             <span style="color:#AD0252" onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 
             <!-- Modal Content -->
-            <form class="modal-content animate">
+            <form class="modal-content animate" method="post" action="{% url 'sign_in' %}">
+                {% csrf_token %}
                 <div class="imgcontainer">
                     <img src="{% static './images/avtr.png' %}" alt="Avatar" class="avatar" width="5">
                 </div>
-                <div class="form-group">
-                    <center><label for="uname"><b>Email</b></label>
-                        <input type="text" placeholder="Email" name="uname" required>
+                   <center><label for="uname"><b>Email</b></label>
+                        <input type="text" placeholder="Email" name="email" required>
                         <br>
                         <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Password" name="psw" required>
+                        <input type="password" placeholder="Password" name="password" required>
                         <br>
                         <button class="cta__button" type="submit">Login</button>
+                        <p>NOT REGISTERED YET CLICK THE LINK BELOW TO REGISTER</p>
+                        <a href="{% url 'register' %}">Register</a>
+                        <a></a>
                     </center>
                 </div>
             </form>
@@ -286,10 +295,13 @@
                 {% else %}
                     <center>
                     <div class="button__container">
-                        <button class="cta__button" type="submit">Register</button>
+                        <button class="cta__button" type="submit">CLICK HERE TO REGISTERs</button>
                     </div>
                 </center>
                 {% endif %}
+                 <center>
+                    <p>ALREADY REGISTERD ? <a href="#id01" onclick="document.getElementById('id01').style.display='block'">CLICK TO SIGN IN </a></p>
+                </center>
                 </form>
             </div>
             </div>
@@ -346,7 +358,7 @@
         <p>Created with ❤️ by Team <a href="https://glug-pace.tech/" target="_blank ">GLUG PACE</a></p>
     </footer>
 
-    {% comment %} <script src="{% static './js/main.js' %}"></script> {% endcomment %}
+    <script src="{% static './js/main.js' %}"></script>
 
 </body>
 

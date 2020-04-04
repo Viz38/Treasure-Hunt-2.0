@@ -56,7 +56,7 @@ class Student(AbstractBaseUser):
     year = models.IntegerField()
     branch = models.CharField(max_length=10)
     phone_regex =  RegexValidator(regex=r'^\+?1?\d{10}$')
-    phone_no = models.CharField(validators=[phone_regex], max_length=17, blank=True)
+    phone_no = models.CharField(validators=[phone_regex], max_length=10, blank=True)
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='last login', auto_now=True)
     is_admin = models.BooleanField(default=False)
@@ -78,7 +78,7 @@ class Student(AbstractBaseUser):
         return True
 
 
-class Answer(models.Model):
+class Submissions(models.Model):
     a = models.AutoField(primary_key=True)
     name = models.ForeignKey(Student,on_delete=models.CASCADE)
     l1 = models.CharField(max_length=200, null=True, blank=True)
@@ -118,3 +118,16 @@ class Answer(models.Model):
     #     ts = (f"l{x}_time"for x in range(1,6))
     #     submissions = '\n'.join(f"{f} = {getattr(self, f)}" for f in ts)
     #     return f"***\n{self.name!r}\n{submissions}\n***\n"
+
+class AnswersKey(models.Model):
+
+    a = models.AutoField(primary_key=True)
+    lvl_1 = models.CharField(max_length=200, null=True, blank=True)
+    lvl_2= models.CharField(max_length=200, null=True, blank=True)
+    lvl_3 = models.CharField(max_length=200, null=True, blank=True)
+    lvl_4= models.CharField(max_length=200, null=True, blank=True)
+    lvl_5 = models.CharField(max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return "ANSWER KEY"
+    

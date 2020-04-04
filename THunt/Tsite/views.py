@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import StudentRegistrationForm, SignInForm
 from django.contrib.auth.decorators import login_required
-from .models import Student, Answer
+from .models import Student, Submissions, AnswersKey
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import authenticate, login
@@ -17,22 +17,18 @@ def home(request):
     return render(request, 'users/home.html')
 
 def sign_in(request):
-    
-    if request.method == "POST":
+    email = request.POST["email"]
+    password = request.POST["password"]
+    user = authenticate(username=email, password=password)
+    if user:
+        login(request, user)
+        if request.GET.get('next'):
+            return redirect(request.GET['next'])  
+        else:
+             return redirect("level_1")
 
-        form = SignInForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data["email"]
-            print(email)
-            password = form.cleaned_data["password"]
-            user = authenticate(username=email, password=password)
-            if user:
-                login(request, user)
-                return redirect("level_1")
-            else:
-                return messages.error("User does not exist")
-    form = SignInForm()
-    return render(request, "users/signin.html", {'form': form})
+    else:
+        return render(request, 'users/home.html', {"ERROR": "NOT REGISTERD"})
 
 
 def register(request):
@@ -60,6 +56,21 @@ def register(request):
 def level_1(request):
 
     return render(request, "users/l1.html")
+
+
+def check_answer(request):
+
+    if request.POST["l1_answer"]:
+        answer = request.POST["l1_answer"]
+        answer_key = AnswersKey.objects.get(a=2)
+        lvl1_answer = answer_key.lvl_1
+        if answer == lvl1_answer:
+            return render(request, "users/l1.html", {"success": "Advanced to the next level congrats :)"})
+
+        else:
+            return render(request, "users/l1.html", {"wrong": "Please try Again"})
+
+
 
 # def solution(request):
 
