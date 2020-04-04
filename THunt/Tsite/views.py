@@ -47,11 +47,13 @@ def register(request):
                 login(request, user)
                 if request.GET.get('next'):
                   return redirect(request.GET['next'])  
-                return redirect("level_1")
-            else:
-                form = StudentRegistrationForm
+                else:
+                    return redirect("level_1")
+        else:
+            return render(request, 'users/home.html', {'form': form})
     form = StudentRegistrationForm()
-    return render(request, 'users/register.html', {'form': form})
+    # Changed from register.html to home.html
+    return render(request, 'users/home.html', {'form': form})
     # return render(request,'users/register',{'form':form})
 
 @login_required(login_url='register')

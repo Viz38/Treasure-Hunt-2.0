@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
+{%load static%}
+{% load widget_tweaks %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="">
     <title>GLUG PACE - Treasure Hunt 2.0</title>
-    <link rel="shortcut icon" type="image/x-icon" href="./images/devfavic.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static './images/devfavic.png' %}">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="{% static './css/main.css' %}">
 </head>
 
 <body>
-
-    <div class="md__modal md__effect">
-        <div class="md__content">
-            <h3>Event Details</h3>
-            <div>
-                <img src="{% static './images/dummy2.jpg' %}" alt="">
-                <button class="md__close">Close</button>
-            </div>
-        </div>
-    </div>
-    <div class="md__overlay"></div>
 
     <header>
         <div class="menu-btn">
@@ -33,9 +23,6 @@
         </div>
         <nav class="menu">
             <ul class="menu-nav">
-                <li class="nav-item">
-                    <!-- <img src="https://picsum.photos/200/100?image=0" alt=""> -->
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#home">Home</a>
                 </li>
@@ -51,23 +38,48 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#register">Register</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="document.getElementById('id01').style.display='block'">Login</a>
+                </li>
             </ul>
         </nav>
     </header>
+
+    <!-- The Modal -->
+    <center>
+        <div id="id01" class="modal" style="position: sticky;">
+            <span style="color:#AD0252" onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+            <!-- Modal Content -->
+            <form class="modal-content animate">
+                <div class="imgcontainer">
+                    <img src="{% static './images/avtr.png' %}" alt="Avatar" class="avatar" width="5">
+                </div>
+                <div class="form-group">
+                    <center><label for="uname"><b>Email</b></label>
+                        <input type="text" placeholder="Email" name="uname" required>
+                        <br>
+                        <label for="psw"><b>Password</b></label>
+                        <input type="password" placeholder="Password" name="psw" required>
+                        <br>
+                        <button class="cta__button" type="submit">Login</button>
+                    </center>
+                </div>
+            </form>
+        </div>
+    </center>
 
     <main class="home" id="home">
         <section class="hero hero__main">
             <div class="container">
                 <div class="hero__content">
                     <h1 class="hero__heading">Treasure Hunt 2.0</h1>
-                    <h2>March, 29 <sup>nd</sup>, 2020 </h2>
+                    {% comment %} <h2>March, 29 <sup>nd</sup>, 2020 </h2>
+                     {% endcomment %}
+                     <h2>SOON</h2>
                     <h4>"This idea of, there's a locked door; how do you open it? You don't necessarily care what's behind it you're just more excited about opening the lock... It's not about finding the treasure it's more about defeating the puzzle." </h4>
                     <div class="button__container">
                         <a href="{% url 'register' %}" class="cta__button">Register Now</a>
-                    </div>
-                    <br><br><br>
-                    <div class="button__container">
-                        <a href="{% url 'sign_in' %}" class="cta__button">Sign In</a>
                     </div>
                 </div>
             </div>
@@ -136,7 +148,7 @@
                         </figcaption>
                     </figure>
                     <figure class="event__card">
-                        <img class="event__image" src="{% static './images/dummy2.jpg' %}g" alt="" />
+                        <img class="event__image" src="{% static './images/dummy2.jpg' %}" alt="" />
                         <figcaption>
                             <div class="event__details">
                                 <h3>RULE 6</h3>
@@ -172,6 +184,114 @@
                         </figcaption>
                     </figure>
                 </div>
+            </div>
+        </section>
+
+{% comment %} 
+     <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}} 
+        {% if request.GET.next %}
+        <input type="hidden" name="next" value="{{request.GET.next}}"> 
+        {% endif %}
+        <div class="form-group">
+            <button class="cta__button" type="submit">Register</button>
+        </div>
+    </form> {% endcomment %}
+
+
+        <section class="hero hero__main" id="register">
+            <div class="container">
+                <div class="hero__content">
+                    <h1 class="hero__heading">Registration</h1>
+                <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                    {% for hidden_field in form.hidden_fields %}
+                        {{ hidden_field }}
+                    {% endfor %}
+                     {% if request.GET.next %}
+                        <input type="hidden" name="next" value="{{request.GET.next}}"> 
+                    {% endif %}
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                             {{ error }}
+                        {% endfor %}
+                    {% endif %}
+
+                    {% for field in form.visible_fields %}
+                            <div class="form-group">
+                            {{ field.label_tag }}
+
+                            {% if form.is_bound %}
+                                {% if field.errors %}
+                                    {% render_field field class="form-control is-invalid" %}
+                                    {% for error in field.errors %}
+                                        <div class="invalid-feedback">
+                                            {{ error }}
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    {% render_field field class="form-control is-valid" %}
+                                {% endif %}
+                                {% else %}
+                                     {% render_field field class="form-control" %}
+                                {% endif %}
+
+                        {% if field.help_text %}
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                        </div>
+                {% endfor %}
+                    {% comment %} <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" name="first-name" id="first-name" placeholder="First Name">
+                        {{form.fields}}
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" name="last-name" id="last-name" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" name="phone" id="phone" placeholder="(000-0000-00)">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">College</label>
+                        <input type="text" name="college" id="college" placeholder="College Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="password-confirm">Semester</label>
+                        <input type="text" name="sem" id="sem" placeholder="Current Semester">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="password-confirm">Confirm Password</label>
+                        <input type="password" name="password-confirm" id="password-confirm" placeholder="Confirm Password">
+                    </div>
+                </div> {% endcomment %}
+                <br>
+                {%if form%}
+                <center>
+                    <div class="button__container">
+                        <button class="cta__button" type="submit">Register</button>
+                    </div>
+                </center>
+                {% else %}
+                    <center>
+                    <div class="button__container">
+                        <button class="cta__button" type="submit">Register</button>
+                    </div>
+                </center>
+                {% endif %}
+                </form>
+            </div>
             </div>
         </section>
 
@@ -226,7 +346,7 @@
         <p>Created with ❤️ by Team <a href="https://glug-pace.tech/" target="_blank ">GLUG PACE</a></p>
     </footer>
 
-    <script src="{% static './js/main.js' %}"></script>
+    {% comment %} <script src="{% static './js/main.js' %}"></script> {% endcomment %}
 
 </body>
 

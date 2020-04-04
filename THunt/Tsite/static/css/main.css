@@ -186,7 +186,7 @@ html {
     background: #100e17 url(../images/bg.jpg);
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: contain
+    background-size: cover
 }
 
 a {
@@ -725,5 +725,156 @@ footer a {
     .event__details a {
         font-size: small;
         padding: .3em!important
+    }
+}
+
+.form-wrap {
+    margin: 25px;
+    width: 100%;
+    padding: 30px;
+}
+
+.form-wrap p {
+    margin: 20px 15px 50px 0;
+}
+
+header h1 {
+    padding: 10px 15px;
+    margin-top: 20px;
+}
+
+header p {
+    font-size: 16px;
+    padding-bottom: 30px;
+    text-align: left;
+}
+
+.form-group {
+    display: inline-block;
+    width: 40%;
+    margin: 10px 10px;
+}
+
+.form-group label {
+    display: block;
+}
+
+.form-group input {
+    width: 100%;
+    line-height: 2.4em;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 15px;
+    padding-left: 10px;
+} 
+
+input[name="password2"].form-control{
+   background-color: #000;
+}
+
+.form-group-checkbox {
+    display: block;
+    width: 100%;
+    padding-left: 10px;
+    margin-top: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #4404bb;
+}
+
+a:hover {
+    color: #300877;
+}
+
+.form-checkbox {
+    display: block;
+}
+
+button {
+    padding: 15px 25px;
+    border: none;
+    background-color: rgb(8, 150, 231);
+    color: white;
+    cursor: pointer;
+    margin-top: 50px;
+}
+
+button:hover {
+    background-color: rgb(6, 127, 197);
+    ;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: sticky;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: center;
+    top: 0;
+    width: 40%;
+    height: 35%;
+    overflow: visible;
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+
+/* Modal Content/Box */
+
+.modal-content {
+    background-color: transparent;
+    position: sticky;
+    margin: 5px auto;
+    /* 15% from the top and centered */
+    border: transparent;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+
+/* The Close Button */
+
+.close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+
+/* Add Zoom Animation */
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
     }
 }

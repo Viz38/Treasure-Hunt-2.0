@@ -5,8 +5,6 @@
         {% if request.GET.next %}
         <input type="hidden" name="next" value="{{request.GET.next}}"> 
         {% endif %}
-        {% comment %} {% if request.GET.next %} {% endcomment %}
-        {% comment %} <input type="hidden" name="next" value="{{request.GET.next}}"> {% endif %} {% endcomment %}
         <div class="form-group">
             <button class="btn btn-outline-info" type="submit">Register</button>
         </div>

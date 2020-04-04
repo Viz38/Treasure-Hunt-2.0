@@ -1,12 +1,13 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.core.validators import RegexValidator
 
 # Create your models here.
 
 class StudentManager(BaseUserManager):
 
-    def create_user(self, email, username, usn, year, branch, password=None):
+    def create_user(self, email, username, usn, year, branch, phone_no, password=None):
 
         if not email:
             raise ValueError("User must have email address")
@@ -19,7 +20,8 @@ class StudentManager(BaseUserManager):
             username = username,
             usn = usn,
             year=year,
-            branch=branch
+            branch=branch,
+            phone_no=phone_no
         )
 
         user.set_password(password)
@@ -27,14 +29,15 @@ class StudentManager(BaseUserManager):
         return user
 
 
-    def create_superuser(self, email, username, usn, year, branch, password=None):
+    def create_superuser(self, email, username, usn, year, branch, phone_no, password=None):
         user = self.create_user(
             email=self.normalize_email(email),
             username = username,
             usn = usn,
             password=password,
             year=year,
-            branch=branch
+            branch=branch,
+            phone_no=phone_no
         )
         user.is_admin = True
         user.is_staff = True
@@ -52,6 +55,8 @@ class Student(AbstractBaseUser):
     usn = models.CharField(max_length=30, unique=True)
     year = models.IntegerField()
     branch = models.CharField(max_length=10)
+    phone_regex =  RegexValidator(regex=r'^\+?1?\d{10}$')
+    phone_no = models.CharField(validators=[phone_regex], max_length=17, blank=True)
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='last login', auto_now=True)
     is_admin = models.BooleanField(default=False)
@@ -60,7 +65,7 @@ class Student(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["usn", "username", "year", "branch"]
+    REQUIRED_FIELDS = ["usn", "username", "year", "branch", "phone_no"]
 
     object = StudentManager()
     def __str__(self):

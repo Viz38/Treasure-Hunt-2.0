@@ -7,7 +7,7 @@ class StudentRegistrationForm(UserCreationForm):
 
     class Meta:
         model = Student
-        fields = ['email', 'username', 'usn', 'year', 'branch']
+        fields = ['email', 'username', 'usn', 'year', 'branch', "phone_no"]
 
 
 # class AnswerForm(ModelForm):
