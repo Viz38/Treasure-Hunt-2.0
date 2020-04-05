@@ -1,239 +1,300 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Float four columns side by side */
-.column {
-  float: left;
-  width: 25%;
-  padding: 0 10px;
-}
-
-/* Remove extra left and right margins, due to padding */
-.row {margin: 0 -5px;}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive columns */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-}
-
-/* Style the counter cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
-}
-
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <title>GLUG PACE - Treasure Hunt 2.0</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./images/devfavic.png">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
+
 <body>
 
-<h2 style="text-align: center">Congratulations</h2>
-<p style="text-align:center;">Tighten Your seats,get ready for more interested level.Be Wise,your one move may cause you to eliminate.</p>
+    <header>
+        <div class="menu-btn">
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+        </div>
+        <nav class="menu">
+            <ul class="menu-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="./home.html">Home</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <h3> 1</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
+    <main class="home" id="home">
+        <section class="hero hero__main">
+            <div class="container">
+                <div class="hero__content">
+                    <h1 class="hero__heading">Congratulations</h1>
+                    <h4>" Tighten Your seats, get ready for more interested level. Be Wise, your one move may cause you to eliminate. " </h4>
+                </div>
+            </div>
+        </section>
 
-  <div class="column">
-    <div class="card">
-      <h3> 2</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-      <h3> 3</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-      <h3> 4</h3>
-    <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-    </div>
-    <div class="column">
-    <div class="card">
-      <h3>5</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>5</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>6</h3>
-     <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3> 7</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>8</h3>
-     <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>Card 4</h3>
-      <p>Some text</p>
-      <p>Some text</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>9</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>10</h3>
-     <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>11</h3>
-     <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>12</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>13</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>14</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
+        <section class="hero hero__events" id="rules">
+            <div class="container">
+                <h2 class="section__heading">NEED A HINT?</h2>
+                <div class="event__container">
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt="" />
+                        <figcaption>
+                            <div class="event__details">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt="" />
+                        <figcaption>
+                            <div class="event__details">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt="" />
+                        <figcaption>
+                            <div class="event__details">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt="" />
+                        <figcaption>
+                            <div class="event__details">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt="" />
+                        <figcaption>
+                            <div class="event__details">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt="" />
+                        <figcaption>
+                            <div class="event__details">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt="" />
+                        <figcaption>
+                            <div class="event__details">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt="" />
+                        <figcaption>
+                            <div class="event__details">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt=" " />
+                        <figcaption>
+                            <div class="event__details ">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt=" " />
+                        <figcaption>
+                            <div class="event__details ">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt=" " />
+                        <figcaption>
+                            <div class="event__details ">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt=" " />
+                        <figcaption>
+                            <div class="event__details ">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt=" " />
+                        <figcaption>
+                            <div class="event__details ">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt=" " />
+                        <figcaption>
+                            <div class="event__details ">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt=" " />
+                        <figcaption>
+                            <div class="event__details ">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt=" " />
+                        <figcaption>
+                            <div class="event__details ">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt=" " />
+                        <figcaption>
+                            <div class="event__details ">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt=" " />
+                        <figcaption>
+                            <div class="event__details ">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt=" " />
+                        <figcaption>
+                            <div class="event__details ">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt=" " />
+                        <figcaption>
+                            <div class="event__details ">
+                                <h3>CLUE</h3>
+                                <br>
+                                <button onclick="myFunction()">Click</button>
+                                <script>
+                                    function myFunction() {
+                                        alert("Text");
+                                    }
+                                </script>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="event__card">
+                        <img class="event__image" src="./images/dummy2.jpg" alt=" " />
+                        <figcaption>
+                            <div class="event__details ">
+                                <h3>CLUE</h3>
+                                <p>Text</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
 
-  <div class="column">
-    <div class="card">
-      <h3>15</h3>
-     <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>16</h3>
-    <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>17</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
+        <section class="hero hero__contact " id="contact">
+            <div class="container ">
+                <div class="contact__container ">
+                    <h2 class="section__heading ">CONTACT US</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum id pariatur, suscipit minus officiis mollitia et magni eius tenetur hic. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, omnis?</p>
+                </div>
+                <div class="coordintor__container ">
+                    <a href="tel:9632675944" style="text-decoration: none; color: aliceblue;">
+                        <div class="coordinator__info ">
+                            <h3>Shakir</h3>
+                            <p>9632675944</p>
+                        </div>
+                    </a>
+                    <a href="tel:956722485" style="text-decoration: none; color: aliceblue;">
+                        <div class="coordinator__info ">
+                            <h3>Hashir</h3>
+                            <p>956722485</p>
+                        </div>
+                    </a>
+                    <a href="tel:98848752606" style="text-decoration: none; color: aliceblue;">
+                        <div class="coordinator__info ">
+                            <h3>Vishnu</h3>
+                            <p>8848752606</p>
+                        </div>
+                    </a>
+                    <a href="tel:9535989868" style="text-decoration: none; color: aliceblue;">
+                        <div class="coordinator__info ">
+                            <h3>Marzooq</h3>
+                            <p>9535989868</p>
+                        </div>
+                    </a>
+                    <a href="tel:9591589769" style="text-decoration: none; color: aliceblue;">
+                        <div class="coordinator__info ">
+                            <h3>Arkaan</h3>
+                            <p>9591589769</p>
+                        </div>
+                    </a>
+                    <a href="tel:7892648855" style="text-decoration: none; color: aliceblue;">
+                        <div class="coordinator__info ">
+                            <h3>Ansad</h3>
+                            <p>7892648855</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Created with ❤️ by Team <a href="https://glug-pace.tech/" target="_blank ">GLUG PACE</a></p>
+    </footer>
 
-  <div class="column">
-    <div class="card">
-      <h3>18</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>19</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <h3>20</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <h3>21</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <h3>22</h3>
-      <p>Need Hint</p>
-      <p>Click Here</p>
-    </div>
-  </div>
- 
-  
-     
-</div>
+    <script src="./js/main.js"></script>
 
 </body>
+
 </html>
