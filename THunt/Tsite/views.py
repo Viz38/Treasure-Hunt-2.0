@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import StudentRegistrationForm, SignInForm
+from .forms import StudentRegistrationForm
 from django.contrib.auth.decorators import login_required
 from .models import Student, Submissions, AnswersKey
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import authenticate, login
+from django.utils import timezone
 # Create your views here.
 
 
@@ -16,21 +17,31 @@ def index(request):
 def home(request):
     return render(request, 'users/home.html')
 
+
+# Handles sign in 
 def sign_in(request):
     email = request.POST["email"]
     password = request.POST["password"]
     user = authenticate(username=email, password=password)
     if user:
         login(request, user)
-        if request.GET.get('next'):
-            return redirect(request.GET['next'])  
+        submissions = Submissions.objects.get(name=request.user)
+        if submissions.l4:
+            return redirect("level_5")
+        if submissions.l3:
+            return redirect("level_4")
+        if submissions.l2:
+            return redirect("level_3")
+        if submissions.l1:
+            return redirect("level_2")
         else:
-             return redirect("level_1")
+            return redirect("level_1")
 
     else:
         return render(request, 'users/home.html', {"ERROR": "NOT REGISTERD"})
+# Signin ends here
 
-
+# Registration 
 def register(request):
     if request.method == 'POST':
         form = StudentRegistrationForm(request.POST)
@@ -40,6 +51,8 @@ def register(request):
             password = form.cleaned_data["password1"]
             user = authenticate(username=email, password=password)
             if user:
+                subssion = Submissions(name=user)
+                subssion.save()
                 login(request, user)
                 if request.GET.get('next'):
                   return redirect(request.GET['next'])  
@@ -48,23 +61,36 @@ def register(request):
         else:
             return render(request, 'users/home.html', {'form': form})
     form = StudentRegistrationForm()
-    # Changed from register.html to home.html
     return render(request, 'users/home.html', {'form': form})
-    # return render(request,'users/register',{'form':form})
+    
+# Registration end here
 
+# For rendiring the level templates 
 @login_required(login_url='register')
 def level_1(request):
 
     return render(request, "users/l1.html")
 
+@login_required(login_url='register')
+def level_2(request):
 
+    return render(request, "users/l2.html")
+
+# rendering end here
+
+
+# For checking out the anser with the db
 def check_answer(request):
 
-    if request.POST["l1_answer"]:
+    if request.POST["l1_answer"] is not None:
+        submit = Submissions.objects.get(name=request.user)
         answer = request.POST["l1_answer"]
         answer_key = AnswersKey.objects.get(a=2)
         lvl1_answer = answer_key.lvl_1
         if answer == lvl1_answer:
+            submit.l1 = answer
+            submit.l1_time = timezone.now()
+            submit.save()
             return render(request, "users/l1.html", {"success": "Advanced to the next level congrats :)"})
 
         else:
