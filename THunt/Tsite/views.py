@@ -90,8 +90,30 @@ def level_1(request):
 
 @login_required(login_url='register')
 def level_2(request):
+    submission = Submissions.objects.get(name=request.user)
+    if submission.l1:
+        return render(request, "users/l2.html")
+    else:
+        return render(request, "useres/cheated_message.html")
 
-    return render(request, "users/l2.html")
+
+@login_required(login_url='register')
+def level_3(request):
+    submission = Submissions.objects.get(name=request.user)
+    if submission.l2:
+        return render(request, "users/l3.html")
+    else:
+        return render(request, "users/cheated_message.html")
+
+
+@login_required(login_url='register')
+def level_4(request):
+    submission = Submissions.objects.get(name=request.user)
+    if submission.l3:
+        return render(request, "users/l4.html")
+    else:
+        return render(request, "users/cheated_message.html")
+    
 
 # rendering end here
 

@@ -1,7 +1,8 @@
+{% load static %}
 <head>
     <meta charset="utf-8">
     <title>GLUG PACE - Treasure Hunt 2.0</title>
-    <link rel="shortcut icon" type="image/x-icon" href="./images/devfavic.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static './images/devfavic.png' %}">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
 
     <style>
@@ -34,7 +35,7 @@
             margin-left: -20px;
             width: 150px;
             height: 170px;
-            background-image: url('snake.gif');
+            background-image: url({% static './images/snake.gif' %});
             background-position: center;
             background-repeat: no-repeat;
             background-size: 150px;

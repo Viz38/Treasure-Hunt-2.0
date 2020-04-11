@@ -9,6 +9,8 @@ urlpatterns = [
     path("sign_in/", views.sign_in, name="sign_in"),
     path("level1/", views.level_1, name="level_1"),
     path("level2/", views.level_2, name="level_2"),
-    path("check_answer", views.check_answer, name="check_answer")
+    path("level3/", views.level_3, name="level_3"),
+    path("level4/", views.level_4, name="level_4"),
+    path("check_answer/", views.check_answer, name="check_answer")
     # path("solution/",views.solution,name="solution"),
 ]
