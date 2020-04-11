@@ -43,6 +43,21 @@ def sign_in(request):
 
 # Registration 
 def register(request):
+
+    if request.user.is_authenticated:
+        submissions = Submissions.objects.get(name=request.user)
+        if submissions.l4:
+            return redirect("level_5")
+        if submissions.l3:
+            return redirect("level_4")
+        if submissions.l2:
+            return redirect("level_3")
+        if submissions.l1:
+            return redirect("level_2")
+        else:
+            return redirect("level_1")
+
+
     if request.method == 'POST':
         form = StudentRegistrationForm(request.POST)
         if form.is_valid():
@@ -51,6 +66,7 @@ def register(request):
             password = form.cleaned_data["password1"]
             user = authenticate(username=email, password=password)
             if user:
+                authenticated = True
                 subssion = Submissions(name=user)
                 subssion.save()
                 login(request, user)
@@ -60,6 +76,7 @@ def register(request):
                     return redirect("level_1")
         else:
             return render(request, 'users/home.html', {'form': form})
+
     form = StudentRegistrationForm()
     return render(request, 'users/home.html', {'form': form})
     
