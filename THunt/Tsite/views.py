@@ -151,7 +151,7 @@ def level_4(request):
            submissions.l4_time = timezone.now()
            submissions.save()
         # change the html over here to lvl 5  
-           return render(request, "users/cheated_message.html")
+           return render(request, "users/last_page.html")
         else:
             submissions.l4.delete()
             return render(request, "users/l4.html", {"fail": "try again :) (make sure its in black and white)"})
@@ -166,8 +166,13 @@ def level_4(request):
         return redirect("level_3")
     else:
         return render(request, "users/cheated_message.html")
-    
 
+@login_required(login_url="register")
+def level_5(request):
+    return render(request,"users/last_page.html")
+    
+def hidden(request):
+    return render(request,"users/l5.html")
 # rendering end here
 
 

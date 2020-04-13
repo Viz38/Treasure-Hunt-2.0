@@ -13,6 +13,8 @@ urlpatterns = [
     path("level4/", views.level_4, name="level_4"),
     path("check_answer/", views.check_answer, name="check_answer"),
     path("check_lvl4/", views.l4, name="checkl4"),
-    path("redirect_user/", views.redirect_user, name="redirect_user")
+    path("redirect_user/", views.redirect_user, name="redirect_user"),
+    path("level5/",views.level_5,name="level_5"),
+    path("Hidden/",views.hidden,name="Hidden"),
     # path("solution/",views.solution,name="solution"),
 ]
