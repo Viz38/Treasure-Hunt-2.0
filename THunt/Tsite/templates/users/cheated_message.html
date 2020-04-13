@@ -21,6 +21,11 @@
                     <p>THIS IS A WARNING :))</p>
                     <a href="{% url 'redirect_user' %}">CLICK TO GO BACK</a>
                 </div>
+                {% if permission %}
+                    <div class="hero__content">
+                        <h1 class="hero__heading">{{permission}}</h1>
+                    </div>
+                {% endif %}
             </div>
         </section>
     </main>

@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import authenticate, login
 from django.utils import timezone
+from django.http import JsonResponse
 import cv2
 # Create your views here.
 
@@ -104,7 +105,7 @@ def level_1(request):
 def level_2(request):
     submissions = Submissions.objects.get(name=request.user)
     if submissions.l4:
-        return redirect("level_5")
+        return render(request,"users/l2.html", {"again": "Welcome back :)"})
     if submissions.l3:
         return redirect("level_4")
     if submissions.l2:
@@ -151,7 +152,7 @@ def level_4(request):
            submissions.l4_time = timezone.now()
            submissions.save()
         # change the html over here to lvl 5  
-           return render(request, "users/last_page.html")
+           return redirect("level_5")
         else:
             submissions.l4.delete()
             return render(request, "users/l4.html", {"fail": "try again :) (make sure its in black and white)"})
@@ -169,10 +170,21 @@ def level_4(request):
 
 @login_required(login_url="register")
 def level_5(request):
-    return render(request,"users/last_page.html")
+
+    submissions = Submissions.objects.get(name=request.user)
+    if submissions.l4:
+        return render(request,"users/last_page.html")
+    else:
+        return render(request, "users/cheated_message.html")
     
 def hidden(request):
-    return render(request,"users/l5.html")
+    
+    submissions = Submissions.objects.get(name=request.user)
+    if submissions.l4:
+        return render(request,"users/l5.html")
+    else:
+        return render(request, "users/cheated_message.html")
+    
 # rendering end here
 
 
@@ -215,14 +227,58 @@ def redirect_user(request):
 @login_required(login_url='register')
 def l4(request):
 
-    submissions = Submissions.objects.get(name=request.user)
-    submissions.l3 = "Submitted"
-    submissions.l3_time = timezone.now()
-    submissions.save()
-    return redirect("level_4")
+    try:
+        flag = request.session["lvl3_done"]
+        print(flag)
+        submissions = Submissions.objects.get(name=request.user)
+        submissions.l3 = "Submitted"
+        submissions.l3_time = timezone.now()
+        submissions.save()
+        return redirect("level_4")
+    except:
+        return render(request, "users/cheated_message.html")
 
 
+@login_required(login_url='register')
+def lv4_check(request):
 
+    request.session["lvl3_done"] = "Yes"
+    return JsonResponse({'response': 'success'})
+
+    
+
+# @login_required(login_url='register')
+# def for_admin(request):
+
+#     if request.user.is_admin:
+#         all_submissions = Submissions.objects.all()
+#         min_time1 = 999
+#         min_time2 = 999
+#         min_time3 = 999
+#         list_in_order = []
+#         first_3 = []
+#         count = 0
+#         for submissions in all_submissions:
+#             if submissions.l5:
+#                 if submissions.l5_time < min_time:
+#                     min_time = submissions.l5_time
+#                     if count < 3
+#                         first_3.append(submissions.name)
+#                         count += 1
+#                 else:
+#                     list_in_order.append(submissions.name)
+#             if submissions.l4:
+#                 if submissions.l4_time < min:
+#                     if count < 3
+#                         first_3.append(submissions.name)
+#                         count += 1
+#                     else:
+#                         list_in_order.append(submissions.name)
+
+#     else:
+#         return redirect(request, "users/cheated_message.html", {"permission": "restricted for you :)"})                
+
+        
 
 # def solution(request):
 

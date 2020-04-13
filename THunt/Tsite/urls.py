@@ -16,5 +16,6 @@ urlpatterns = [
     path("redirect_user/", views.redirect_user, name="redirect_user"),
     path("level5/",views.level_5,name="level_5"),
     path("Hidden/",views.hidden,name="Hidden"),
+    path("l4_check/", views.lv4_check, name="check_lvl4")
     # path("solution/",views.solution,name="solution"),
 ]

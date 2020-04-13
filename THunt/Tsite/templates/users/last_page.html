@@ -1,8 +1,8 @@
 <html>
-
+{% load static %}
 <head>
     <title>Somewhere Around the END</Title>
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../images/devfavic.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static './images/devfavic.png' %}">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat');
         body {
@@ -57,9 +57,9 @@
 <body>
     <div class="title">
         <h1> LEVEL 5 </h1>
-
+        <p>Go around once more maybe you will find it :)</p>
         <center>
-            <a target="_blank" href="../../../../THunt/THunt/ssdgvssert5342rwesfsgerr.rar" class="white-mode">Lets go!</a>
+            <a target="_blank" href="{% static './rar/ssdgvssert5342rwesfsgerr.rar' %}" class="white-mode">Lets go!</a>
             <p>Share it with any of the coordinators.</p>
         </center>
     </div>
