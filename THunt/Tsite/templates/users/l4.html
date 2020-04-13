@@ -35,6 +35,11 @@
                 <div class="hero__content">
                     <h1 class="hero__heading">Congratulations</h1>
                     <p>LEVEL 4</p>
+                    {% if fail %}
+                    <center>
+                        <h1>{{fail}}</h1>
+                    </center>
+                    {% endif %}
                 </div>
             </div>
         </section>
@@ -47,8 +52,9 @@
                 <div class="about__info">
                     <h2 class="section__heading">CLUE:</h2>
                     <p>The image says it all. Modern day Leonardo da Vinci can it make out.</p>
-                    <form>
-                        <input type="file" id="myfile" name="l4_answer">
+                    <form action="{% url 'level_4' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" id="myfile" name="l4_answer" accept="image/*">
                         <button class="cta__button">submit</button>
                     </form>
                 </div>
@@ -106,7 +112,7 @@
         <p>Created with ❤️ by Team <a href="https://glug-pace.tech/" target="_blank ">GLUG PACE</a></p>
     </footer>
 
-    <script src="./js/main.js"></script>
+    <script src="{% static './js/main.js' %}"></script>
 
 </body>
 

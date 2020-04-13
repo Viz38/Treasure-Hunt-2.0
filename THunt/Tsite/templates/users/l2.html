@@ -39,6 +39,13 @@
             </div>
         </section>
 
+        <div class="container" id="riddle">
+                <div class="hero__content" style="height: 300px; width:300px; margin-left: 30rem; margin-bottom: 12rem; text-align:center; color: red;">
+                   <h2>This is the riddle, solve it message and advance :)</h2>
+                   <img style="position: relative;" src={% static './images/lvl2.jpeg' %}>
+                </div>
+        </div>
+            
         <section class="hero hero__events" id="rules">
             <div class="container">
                 <h2 class="section__heading">NEED A HINT?</h2>
@@ -223,7 +230,9 @@
                                 <button onclick="myFunction()">Click</button>
                                 <script>
                                     function myFunction() {
-                                        alert("Text");
+                                       riddle = document.getElementById("riddle")
+                                       riddle.style.display = "block"
+                                       window.location.hash = "#riddle"
                                     }
                                 </script>
                             </div>
