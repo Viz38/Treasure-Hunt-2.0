@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,29 +33,31 @@
     <main class="home" id="home">
         <section class="hero hero__main">
             {% if again %}
-                <div class="container">
-                    <div class="hero__content">
-                        <h1 class="hero__heading">Congratulations Reaching level 2!</h1>
-                        <h4>{{again}}</h4>
-                    </div>
+            <div class="container">
+                <div class="hero__content">
+                    <h1 class="hero__heading">Welcome back</h1>
+                    <h3>Level 2</h3>
+                    <h4>{{again}}</h4>
                 </div>
+            </div>
             {% else %}
-                <div class="container">
-                    <div class="hero__content">
-                        <h1 class="hero__heading">Congratulations Reaching level 2!</h1>
-                        <h4>" Tighten Your seats, get ready for more interested level. Be Wise, your one move may cause you to eliminate. " </h4>
-                    </div>
+            <div class="container">
+                <div class="hero__content">
+                    <h1 class="hero__heading">Welcome back</h1>
+                    <h3>Level 2</h3>
+                    <h4>" Tighten Your seats, get ready for more interested level. Be Wise, your one move may cause you to eliminate. " </h4>
                 </div>
+            </div>
             {% endif %}
         </section>
 
-        <div class="container" id="riddle" style= "display:none;">
-                <div class="hero__content" style="height: 300px; width:300px; margin-left: 30rem; margin-bottom: 12rem; text-align:center; color: red;">
-                   <h2>This is the riddle, solve it message and advance :)</h2>
-                   <img style="position: relative;" src={% static './images/lvl2.jpeg' %}>
-                </div>
+        <div class="container" id="riddle" style="display:none;">
+            <div class="hero__content" style="height: 300px; width:300px; margin-left: 30rem; margin-bottom: 12rem; text-align:center; color: red;">
+                <h2>This is the riddle, solve it message and advance :)</h2>
+                <img style="position: relative;" src={% static './images/lvl2.jpeg' %}>
+            </div>
         </div>
-            
+
         <section class="hero hero__events" id="rules">
             <div class="container">
                 <h2 class="section__heading">NEED A HINT?</h2>
@@ -217,7 +220,7 @@
                         <figcaption>
                             <div class="event__details">
                                 <h3>CLUE</h3>
-                                 <a href="{% url 'Hidden' %}">Text</a>
+                                <a href="{% url 'Hidden' %}">Text</a>
                             </div>
                         </figcaption>
                     </figure>
@@ -239,9 +242,9 @@
                                 <button onclick="myFunction()">Click</button>
                                 <script>
                                     function myFunction() {
-                                       riddle = document.getElementById("riddle")
-                                       riddle.style.display = "block"
-                                       window.location.hash = "#riddle"
+                                        riddle = document.getElementById("riddle")
+                                        riddle.style.display = "block"
+                                        window.location.hash = "#riddle"
                                     }
                                 </script>
                             </div>
