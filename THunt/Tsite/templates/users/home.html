@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-{%load static%}
-{% load widget_tweaks %}
+{%load static%} {% load widget_tweaks %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +16,9 @@
 <body>
 
     {% if ERROR %}
-        <script>
-            alert("NOT REGISTERED")
-        </script>
+    <script>
+        alert("NOT REGISTERED")
+    </script>
     {% endif %}
 
     <header>
@@ -45,7 +45,7 @@
                     <a class="nav-link" href="#register">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="#id01" onclick="document.getElementById('id01').style.display='block'">Login</a>
+                    <a class="nav-link" href="#id01" onclick="document.getElementById('id01').style.display='block'">Login</a>
                 </li>
             </ul>
         </nav>
@@ -62,19 +62,19 @@
                 <div class="imgcontainer">
                     <img src="{% static './images/avtr.png' %}" alt="Avatar" class="avatar" width="5">
                 </div>
-                   <center><label for="uname"><b>Email</b></label>
-                        <input type="text" placeholder="Email" name="email" required>
-                        <br>
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Password" name="password" required>
-                        <br>
-                        <button class="cta__button" type="submit">Login</button>
-                        <p>NOT REGISTERED YET CLICK THE LINK BELOW TO REGISTER</p>
-                        <a href="{% url 'register' %}">Register</a>
-                        <a></a>
-                    </center>
-                </div>
-            </form>
+                <center><label for="uname"><b>Email</b></label>
+                    <input type="text" placeholder="Email" name="email" required>
+                    <br>
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Password" name="password" required>
+                    <br>
+                    <button class="cta__button" type="submit">Login</button>
+                    <p>NOT REGISTERED YET CLICK THE LINK BELOW TO REGISTER</p>
+                    <a href="{% url 'register' %}">Register</a>
+                    <a></a>
+                </center>
+        </div>
+        </form>
         </div>
     </center>
 
@@ -159,7 +159,7 @@
                         <figcaption>
                             <div class="event__details">
                                 <h3>RULE 6</h3>
-                                <p>A person may use smartphones or any internet devices.</p>
+                                <p>A person may use smartphones or any internet devices (PC is highly recommended).</p>
                             </div>
                         </figcaption>
                     </figure>
@@ -194,110 +194,79 @@
             </div>
         </section>
 
-{% comment %} 
-     <form action="{% url 'register' %}" method="post">
-        {% csrf_token %}
-        {{form.as_p}} 
-        {% if request.GET.next %}
-        <input type="hidden" name="next" value="{{request.GET.next}}"> 
-        {% endif %}
-        <div class="form-group">
-            <button class="cta__button" type="submit">Register</button>
-        </div>
-    </form> {% endcomment %}
+        {% comment %}
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %} {{form.as_p}} {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{request.GET.next}}"> {% endif %}
+            <div class="form-group">
+                <button class="cta__button" type="submit">Register</button>
+            </div>
+        </form> {% endcomment %}
 
 
         <section class="hero hero__main" id="register">
             <div class="container">
                 <div class="hero__content">
                     <h1 class="hero__heading">Registration</h1>
-                <form action="{% url 'register' %}" method="post">
-                {% csrf_token %}
-                    {% for hidden_field in form.hidden_fields %}
-                        {{ hidden_field }}
-                    {% endfor %}
-                     {% if request.GET.next %}
-                        <input type="hidden" name="next" value="{{request.GET.next}}"> 
-                    {% endif %}
-                    {% if form.non_field_errors %}
-                        {% for error in form.non_field_errors %}
-                             {{ error }}
-                        {% endfor %}
-                    {% endif %}
-
-                    {% for field in form.visible_fields %}
-                            <div class="form-group">
-                            {{ field.label_tag }}
-
-                            {% if form.is_bound %}
-                                {% if field.errors %}
-                                    {% render_field field class="form-control is-invalid" %}
-                                    {% for error in field.errors %}
-                                        <div class="invalid-feedback">
-                                            {{ error }}
-                                        </div>
-                                    {% endfor %}
-                                {% else %}
-                                    {% render_field field class="form-control is-valid" %}
-                                {% endif %}
-                                {% else %}
-                                     {% render_field field class="form-control" %}
-                                {% endif %}
-
-                        {% if field.help_text %}
-                            <small class="form-text text-muted">{{ field.help_text }}</small>
-                        {% endif %}
+                    <form action="{% url 'register' %}" method="post">
+                        {% csrf_token %} {% for hidden_field in form.hidden_fields %} {{ hidden_field }} {% endfor %} {% if request.GET.next %}
+                        <input type="hidden" name="next" value="{{request.GET.next}}"> {% endif %} {% if form.non_field_errors %} {% for error in form.non_field_errors %} {{ error }} {% endfor %} {% endif %} {% for field in form.visible_fields %}
+                        <div class="form-group">
+                            {{ field.label_tag }} {% if form.is_bound %} {% if field.errors %} {% render_field field class="form-control is-invalid" %} {% for error in field.errors %}
+                            <div class="invalid-feedback">
+                                {{ error }}
+                            </div>
+                            {% endfor %} {% else %} {% render_field field class="form-control is-valid" %} {% endif %} {% else %} {% render_field field class="form-control" %} {% endif %} {% if field.help_text %}
+                            <small class="form-text text-muted">{{ field.help_text }}</small> {% endif %}
                         </div>
-                {% endfor %}
-                    {% comment %} <div class="form-group">
-                        <label for="first-name">First Name</label>
-                        <input type="text" name="first-name" id="first-name" placeholder="First Name">
-                        {{form.fields}}
-                    </div>
-                    <div class="form-group">
-                        <label for="last-name">Last Name</label>
-                        <input type="text" name="last-name" id="last-name" placeholder="Last Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="text" name="phone" id="phone" placeholder="(000-0000-00)">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" id="email" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">College</label>
-                        <input type="text" name="college" id="college" placeholder="College Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="password-confirm">Semester</label>
-                        <input type="text" name="sem" id="sem" placeholder="Current Semester">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="password-confirm">Confirm Password</label>
-                        <input type="password" name="password-confirm" id="password-confirm" placeholder="Confirm Password">
-                    </div>
+                        {% endfor %} {% comment %}
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" name="first-name" id="first-name" placeholder="First Name"> {{form.fields}}
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" name="last-name" id="last-name" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" name="phone" id="phone" placeholder="(000-0000-00)">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">College</label>
+                            <input type="text" name="college" id="college" placeholder="College Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="password-confirm">Semester</label>
+                            <input type="text" name="sem" id="sem" placeholder="Current Semester">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="password-confirm">Confirm Password</label>
+                            <input type="password" name="password-confirm" id="password-confirm" placeholder="Confirm Password">
+                        </div>
                 </div> {% endcomment %}
-                <br>
-                {%if form%}
+                <br> {%if form%}
                 <center>
                     <div class="button__container">
                         <button class="cta__button" type="submit">Register</button>
                     </div>
                 </center>
                 {% else %}
-                    <center>
+                <center>
                     <div class="button__container">
                         <button class="cta__button" type="submit">CLICK HERE TO REGISTER</button>
                     </div>
                 </center>
                 {% endif %}
-                 <center>
+                <center>
                     <p>ALREADY REGISTERD ? <a href="#id01" onclick="document.getElementById('id01').style.display='block'">CLICK TO SIGN IN </a></p>
                 </center>
                 </form>
