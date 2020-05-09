@@ -1,12 +1,7 @@
-# Treasure-Hunt
+# Treasure-Hunt 2.0
 
-Hey Peeps!
+This is a repo for GLUG PACE Tech Treasure Hunt 2.0.
 
-  Before you contribute to backend part make sure you have newer versions of python and django.
-  
-  Python - 3.5+,
-  Django - 3.0
-
-Thank You.
+(Includes phase 1 only)
 
   
